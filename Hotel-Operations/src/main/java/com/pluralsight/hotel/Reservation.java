@@ -6,7 +6,7 @@ public class Reservation {
     private int numberOfNights;
     private boolean isWeekend;
 
-    // Constructor
+    // Constructor to initialize Reservation with guest, room, numberOfNights, and isWeekend
     public Reservation(Guest guest, Room room, int numberOfNights, boolean isWeekend) {
         this.guest = guest;
         this.room = room;

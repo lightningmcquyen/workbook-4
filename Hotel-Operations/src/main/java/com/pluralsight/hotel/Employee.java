@@ -1,14 +1,13 @@
 package com.pluralsight.hotel;
 
-import java.util.Objects;
+public class Employee {
+    private final int employeeId;      // Unique ID for the employee
+    private final String name;          // Name of the employee
+    private final String department;     // Department where the employee works
+    private final double payRate;        // Hourly pay rate for the employee
+    private final double hoursWorked;    // Total hours worked by the employee
 
-public final class Employee {
-    private final int employeeId;
-    private final String name;
-    private final String department;
-    private final double payRate;
-    private final double hoursWorked;
-
+    // Constructor to initialize the Employee object
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
         this.name = name;
@@ -17,66 +16,58 @@ public final class Employee {
         this.hoursWorked = hoursWorked;
     }
 
+    // Method to calculate total pay, including overtime if applicable
     public double getTotalPay() {
         if (hoursWorked > 40) {
-            return (40 * payRate) + ((hoursWorked - 40) * payRate * 1.5); // Overtime calculation
+            return (40 * payRate) + ((hoursWorked - 40) * payRate * 1.5); // Calculate overtime
         }
-        return hoursWorked * payRate; // Regular pay
+        return hoursWorked * payRate; // Calculate regular pay
     }
 
+    // Getter for regular hours (capped at 40)
     public double getRegularHours() {
-        return Math.min(hoursWorked, 40); // Regular hours are capped at 40
+        return Math.min(hoursWorked, 40); // Regular hours
     }
 
+    // Getter for overtime hours (hours above 40)
     public double getOvertimeHours() {
-        return Math.max(0, hoursWorked - 40); // Overtime hours > 40
+        return Math.max(0, hoursWorked - 40); // Overtime hours
     }
 
-    public int employeeId() {
+    // Getter for employee ID
+    public int getEmployeeId() {
         return employeeId;
     }
 
-    public String name() {
+    // Getter for employee name
+    public String getName() {
         return name;
     }
 
-    public String department() {
+    // Getter for employee department
+    public String getDepartment() {
         return department;
     }
 
-    public double payRate() {
+    // Getter for pay rate
+    public double getPayRate() {
         return payRate;
     }
 
-    public double hoursWorked() {
+    // Getter for hours worked
+    public double getHoursWorked() {
         return hoursWorked;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (Employee) obj;
-        return this.employeeId == that.employeeId &&
-                Objects.equals(this.name, that.name) &&
-                Objects.equals(this.department, that.department) &&
-                Double.doubleToLongBits(this.payRate) == Double.doubleToLongBits(that.payRate) &&
-                Double.doubleToLongBits(this.hoursWorked) == Double.doubleToLongBits(that.hoursWorked);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(employeeId, name, department, payRate, hoursWorked);
-    }
-
+    // Representation of the Employee object
     @Override
     public String toString() {
-        return "Employee[" +
+        return "Employee{" +
                 "employeeId=" + employeeId + ", " +
-                "name=" + name + ", " +
-                "department=" + department + ", " +
+                "name='" + name + '\'' + ", " +
+                "department='" + department + '\'' + ", " +
                 "payRate=" + payRate + ", " +
-                "hoursWorked=" + hoursWorked + ']';
+                "hoursWorked=" + hoursWorked +
+                '}';
     }
-
 }

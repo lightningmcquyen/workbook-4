@@ -1,43 +1,31 @@
 package com.pluralsight.hotel;
 
-import java.util.Objects;
+public class Guest {
+    private String name;          // Name of the guest
+    private String contactNumber; // Contact number of the guest
 
-public final class Guest {
-    private final String name;
-    private final String contactNumber;
-
+    // Constructor to initialize Guest with name and contact number
     public Guest(String name, String contactNumber) {
         this.name = name;
         this.contactNumber = contactNumber;
     }
 
-    public String name() {
+    // Getter for the guest's name
+    public String getName() {
         return name;
     }
 
-    public String contactNumber() {
+    // Getter for the guest's contact number
+    public String getContactNumber() {
         return contactNumber;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (Guest) obj;
-        return Objects.equals(this.name, that.name) &&
-                Objects.equals(this.contactNumber, that.contactNumber);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, contactNumber);
-    }
-
+    // String representation of the Guest object
     @Override
     public String toString() {
-        return "Guest[" +
-                "name=" + name + ", " +
-                "contactNumber=" + contactNumber + ']';
+        return "Guest{" +
+                "name='" + name + '\'' +
+                ", contactNumber='" + contactNumber + '\'' +
+                '}';
     }
-
 }
