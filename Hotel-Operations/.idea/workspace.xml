@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bcfe6aa5-3741-4914-8d7f-266fdf1787d0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/hotel/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/hotel/Guest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/hotel/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/hotel/Reservation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/hotel/Room.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/pluralsight/hotel/Employee.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/pluralsight/hotel/Guest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="bcfe6aa5-3741-4914-8d7f-266fdf1787d0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
