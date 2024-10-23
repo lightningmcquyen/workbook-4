@@ -1,24 +1,11 @@
 package com.pluralsight.hotel;
 
-public class Guest {
-    private final String name;          // Name of the guest
-    private final String contactNumber; // Contact number of the guest
-
+/**
+ * @param name          Name of the guest
+ * @param contactNumber Contact number of the guest
+ */
+public record Guest(String name, String contactNumber) {
     // Constructor to initialize Guest with name and contact number
-    public Guest(String name, String contactNumber) {
-        this.name = name;
-        this.contactNumber = contactNumber;
-    }
-
-    // Getter for the guest's name
-    public String getName() {
-        return name; // Use this method to access the name
-    }
-
-    // Getter for the guest's contact number
-    public String getContactNumber() {
-        return contactNumber;
-    }
 
     // toString method for easy representation
     @Override

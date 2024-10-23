@@ -1,20 +1,15 @@
 package com.pluralsight.hotel;
 
-public class Employee {
-    private final int employeeId;      // Unique ID for the employee
-    private final String name;          // Name of the employee
-    private final String department;     // Department where the employee works
-    private final double payRate;        // Hourly pay rate for the employee
-    private final double hoursWorked;    // Total hours worked by the employee
-
+/**
+ * @param employeeId  Unique ID for the employee
+ * @param name        Name of the employee
+ * @param department  Department where the employee works
+ * @param payRate     Hourly pay rate for the employee
+ * @param hoursWorked Total hours worked by the employee
+ */
+public record Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
     // Constructor to initialize the Employee object
-    public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
-        this.employeeId = employeeId;
-        this.name = name; // Here, you can use name directly as it's a constructor parameter
-        this.department = department;
-        this.payRate = payRate;
-        this.hoursWorked = hoursWorked;
-    }
+    // Here, you can use name directly as it's a constructor parameter
 
     // Method to calculate total pay, including overtime if applicable
     public double getTotalPay() {
@@ -22,31 +17,6 @@ public class Employee {
             return (40 * payRate) + ((hoursWorked - 40) * payRate * 1.5); // Calculate overtime
         }
         return hoursWorked * payRate; // Calculate regular pay
-    }
-
-    // Getter for employee ID
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    // Getter for employee name
-    public String getName() {
-        return name;
-    }
-
-    // Getter for employee department
-    public String getDepartment() {
-        return department;
-    }
-
-    // Getter for pay rate
-    public double getPayRate() {
-        return payRate;
-    }
-
-    // Getter for hours worked
-    public double getHoursWorked() {
-        return hoursWorked;
     }
 
     // Representation of the Employee object
