@@ -1,70 +1,47 @@
 package com.pluralsight.hotel;
 
 public class Reservation {
-    final private Guest guest;
-    final private Room room;
-    private int numberOfNights;
-    private boolean isWeekend;
+    private final Guest guest;       // Guest associated with the reservation
+    private final Room room;         // Room being reserved
+    private int numberOfNights;      // Number of nights for the stay
+    private boolean isWeekend;        // Status if the stay includes a weekend
 
-    // Constructor to initialize Reservation with guest, room, numberOfNights, and isWeekend
+    // Constructor to initialize Reservation
     public Reservation(Guest guest, Room room, int numberOfNights, boolean isWeekend) {
         this.guest = guest;
         this.room = room;
         this.numberOfNights = numberOfNights;
         this.isWeekend = isWeekend;
-        room.checkIn(); // Automatically check in when reserved
     }
 
-    // Getting the room type
+    // Getter for room type
     public String getRoomType() {
-        return room.getRoomType();
+        return room.getNumberOfBeds() == 1 ? "king" : "double"; // Simple room type logic
     }
 
-    // Type of room
-    public void setRoomType(String roomType) {
-        room.setRoomType(roomType);
-    }
-
-    // Pricing
-    public double getPrice() {
-        double pricePerNight = room.getPrice();
-        double totalPrice = pricePerNight * numberOfNights;
-
-        // Increase price by 10% if the stay is over the weekend
-        if (isWeekend) {
-            totalPrice *= 1.10;
-        }
-        return totalPrice;
-    }
-
-    // Getting the duration of stay
+    // Setters and Getters
     public int getNumberOfNights() {
         return numberOfNights;
     }
 
-    // Duration of stay set
     public void setNumberOfNights(int numberOfNights) {
         this.numberOfNights = numberOfNights;
     }
 
-    // It is the weekend
     public boolean isWeekend() {
-        return isWeekend;
+        return isWeekend; // Return weekend status
     }
 
-    // Setting up for it to be the weekend
     public void setIsWeekend(boolean isWeekend) {
-        this.isWeekend = isWeekend;
+        this.isWeekend = isWeekend; // Set weekend status
     }
 
-    // Method for total price
-    public double getReservationTotal() {
-        return getPrice();
-    }
-
-    // Method to cancel the reservation
-    public void cancel() {
-        room.checkOut(); // Automatically check out when canceled
-        System.out.println("Reservation canceled for " + guest.name()); // Use the getter
+    // Calculate total price
+    public double getPrice() {
+        double basePrice = room.getPrice();
+        if (isWeekend) {
+            basePrice *= 1.1; // Increase price by 10% if it's a weekend
+        }
+        return basePrice * numberOfNights; // Total price for the stay
     }
 }

@@ -10,7 +10,7 @@ public class Employee {
     // Constructor to initialize the Employee object
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
-        this.name = name;
+        this.name = name; // Here, you can use name directly as it's a constructor parameter
         this.department = department;
         this.payRate = payRate;
         this.hoursWorked = hoursWorked;
@@ -22,16 +22,6 @@ public class Employee {
             return (40 * payRate) + ((hoursWorked - 40) * payRate * 1.5); // Calculate overtime
         }
         return hoursWorked * payRate; // Calculate regular pay
-    }
-
-    // Getter for regular hours (capped at 40)
-    public double getRegularHours() {
-        return Math.min(hoursWorked, 40); // Regular hours
-    }
-
-    // Getter for overtime hours (hours above 40)
-    public double getOvertimeHours() {
-        return Math.max(0, hoursWorked - 40); // Overtime hours
     }
 
     // Getter for employee ID

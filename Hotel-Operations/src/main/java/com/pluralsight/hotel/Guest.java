@@ -1,8 +1,8 @@
 package com.pluralsight.hotel;
 
 public class Guest {
-    private String name;          // Name of the guest
-    private String contactNumber; // Contact number of the guest
+    private final String name;          // Name of the guest
+    private final String contactNumber; // Contact number of the guest
 
     // Constructor to initialize Guest with name and contact number
     public Guest(String name, String contactNumber) {
@@ -12,7 +12,7 @@ public class Guest {
 
     // Getter for the guest's name
     public String getName() {
-        return name;
+        return name; // Use this method to access the name
     }
 
     // Getter for the guest's contact number
@@ -20,7 +20,7 @@ public class Guest {
         return contactNumber;
     }
 
-    // String representation of the Guest object
+    // toString method for easy representation
     @Override
     public String toString() {
         return "Guest{" +

@@ -1,73 +1,55 @@
 package com.pluralsight.hotel;
 
 public class Room {
-    private String roomType; // "king" or "double"
-    final private int numberOfBeds;
-    private boolean isOccupied;
-    private boolean isDirty;
+    private final int numberOfBeds;  // Number of beds in the room
+    private final double price;       // Price per night for the room
+    private boolean occupied;         // Status if the room is occupied
+    private boolean dirty;            // Status if the room is dirty
 
-    // Constructor
-    public Room(int roomNumber, String roomType, int numberOfBeds, boolean isDirty) {
-        this.roomType = roomType;
+    // Constructor to initialize Room attributes
+    public Room(int numberOfBeds, double price) {
         this.numberOfBeds = numberOfBeds;
-        this.isOccupied = false;
-        this.isDirty = isDirty;
+        this.price = price;
+        this.occupied = false; // Initially, the room is not occupied
+        this.dirty = false;    // Initially, the room is clean
     }
 
-    // Bed capacity
+    // Getters
     public int getNumberOfBeds() {
-        return numberOfBeds;
+        return numberOfBeds;  // Return number of beds
     }
 
-    // Room type price
     public double getPrice() {
-        double price;
-        if ("king".equalsIgnoreCase(roomType)) {
-            price = 139.00;
-        } else {
-            price = 124.00;
-        }
-        return price;
+        return price;         // Return price per night
     }
 
     public boolean isOccupied() {
-        return isOccupied;
+        return occupied;      // Return occupancy status
     }
 
     public boolean isDirty() {
-        return isDirty;
+        return dirty;        // Return cleanliness status
     }
 
+    // Method to check if the room is available
     public boolean isAvailable() {
-        return !isOccupied && !isDirty;
+        return !occupied && !dirty; // Available if not occupied and not dirty
     }
 
-    public String getRoomType() {
-        return roomType;
-    }
-
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
-    }
-
-    // Checking-in method
+    // Methods to change occupancy and cleanliness
     public void checkIn() {
-        if (isAvailable()) {
-            isOccupied = true;
-            isDirty = true; // Mark as dirty after check-in
-        } else {
-            System.out.println("Room is not available for check-in.");
-        }
+        occupied = true;      // Mark room as occupied
     }
 
-    // Checking-out method
     public void checkOut() {
-        isOccupied = false;
-        isDirty = true; // Mark as dirty after check-out
+        occupied = false;     // Mark room as not occupied
     }
 
-    // Cleaning method
-    public void cleanRoom() {
-        isDirty = false; // Clean the room
+    public void clean() {
+        dirty = false;        // Mark room as clean
+    }
+
+    public void dirty() {
+        dirty = true;         // Mark room as dirty
     }
 }
