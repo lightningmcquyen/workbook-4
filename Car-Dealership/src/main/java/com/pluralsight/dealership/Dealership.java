@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Dealership {
     // Instance variables
-    private ArrayList<Object> inventory;
+    private final ArrayList<Object> inventory;
     private String name;
     private String address;
     private String phone;
@@ -74,7 +74,7 @@ public class Dealership {
         return null;
     }
 
-    public ArrayList<Object> getAllVehicles(){
+    public ArrayList<Vehicle> getAllVehicles(){
 
         return inventory;
     }
