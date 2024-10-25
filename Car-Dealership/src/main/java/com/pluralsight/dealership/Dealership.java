@@ -2,8 +2,9 @@ package com.pluralsight.dealership;
 
 import java.util.ArrayList;
 
-// Instance variables
 public class Dealership {
+    // Instance variables
+    private ArrayList<Object> inventory;
     private String name;
     private String address;
     private String phone;
@@ -49,34 +50,43 @@ public class Dealership {
     }
 
     public Vehicle getVehiclesByMakeModel(String make, String model){
+
         return null;
     }
 
     public Vehicle getVehiclesByYear(int min, int max){
+
         return null;
     }
 
     public Vehicle getVehiclesByColor(String color){
+
         return null;
     }
 
     public Vehicle getVehiclesByMileage(double min, double max){
+
         return null;
     }
 
     public Vehicle getVehiclesByType(String vehicleType){
+
         return null;
     }
 
-    public ArrayList<Vehicle> getAllVehicles(){
+    public ArrayList<Object> getAllVehicles(){
+
         return inventory;
     }
 
     public void addVehicle(Vehicle vehicle){
+
         inventory.add(vehicle);
     }
 
     public void removeVehicle(Vehicle vehicle){
+
         inventory.remove(vehicle);
     }
+
 }
