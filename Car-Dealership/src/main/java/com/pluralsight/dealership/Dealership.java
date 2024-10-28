@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Dealership {
     // Instance variables
     private final ArrayList<Vehicle> inventory; //holds all vehicles
-    private DealershipFileManager fileManager; // Add a file manager reference
+    private final DealershipFileManager fileManager; // Add a file manager reference
     private String name;
     private String address;
     private String phone;

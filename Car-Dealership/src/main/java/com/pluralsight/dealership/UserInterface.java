@@ -7,13 +7,15 @@ public class UserInterface {
 
     private Dealership dealership;
     private boolean isRunning;
-    final private Scanner scanley;
+    private final Scanner scanley;
 
     public UserInterface() {
         this.isRunning = true; // Initialize to start the loop
         this.scanley = new Scanner(System.in);
+        init(); // Initialize the dealership when UserInterface is created
     }
 
+    // Method to display vehicles
     private void displayVehicles(ArrayList<Vehicle> vehicles) {
         if (vehicles.isEmpty()) {
             System.out.println("No vehicles found."); // Message if no vehicles are found
@@ -24,32 +26,28 @@ public class UserInterface {
         }
     }
 
-    // initialize dealership
+    // Initialize dealership by loading data from the file
     private void init() {
         DealershipFileManager manager = new DealershipFileManager();
         this.dealership = manager.getDealership();
     }
 
+    // Quit the application and save the dealership data
     public void quit() {
         DealershipFileManager manager = new DealershipFileManager();
         manager.saveDealership(dealership); // Save dealership data
-
         System.out.println("""
-                    
-                  D & B Used Cars|111 Old Benbrook Rd|817-555-5555
-                    
+                D & B Used Cars|111 Old Benbrook Rd|817-555-5555
                 🚗 Thank you for stopping by. Please come again! 🚚
-                    
                 """);
-        isRunning = false; // exit loop
+        isRunning = false; // Exit loop
     }
 
+    // Display the menu options
     public void displayMenu() {
         System.out.println("""
-                                    
                 🏁 Welcome to D & B Used Cars 💨
                 ================================
-                                    
                 (A) Display Vehicles By Price
                 (B) Display Vehicles By Make/Model
                 (C) Display Vehicles By Year
@@ -60,14 +58,13 @@ public class UserInterface {
                 (H) Add a Vehicle
                 (I) Remove a Vehicle
                 (X) Quit
-                                    
                 ================================
-                       Enter your choice:
+                Enter your choice:
                 """);
     }
 
+    // Main display loop
     public void display() {
-        init();
         while (isRunning) { // Keep the application running
             displayMenu(); // Show menu options
             String option = scanley.nextLine().toUpperCase(); // Get user input
@@ -89,6 +86,7 @@ public class UserInterface {
         }
     }
 
+    // Process requests based on criteria
     public void processGetByPriceRequest() {
         System.out.print("Enter minimum price: ");
         double minPrice = scanley.nextDouble();
@@ -149,42 +147,42 @@ public class UserInterface {
     }
 
     public void processGetAllVehiclesRequest() {
-
-        displayVehicles(dealership.getAllVehicles());
+        displayVehicles(dealership.getAllVehicles()); // Display all vehicles
     }
 
     public void processAddVehicleRequest() {
-        // Get vehicle details from the user (you may want to improve this part)
-        Scanner scanner = new Scanner(System.in);
+        // Get vehicle details from the user
         System.out.println("Enter VIN:");
-        int vin = Integer.parseInt(scanner.nextLine());
+        int vin = Integer.parseInt(scanley.nextLine());
         System.out.println("Enter Year:");
-        int year = Integer.parseInt(scanner.nextLine());
+        int year = Integer.parseInt(scanley.nextLine());
         System.out.println("Enter Make:");
-        String make = scanner.nextLine();
+        String make = scanley.nextLine();
         System.out.println("Enter Model:");
-        String model = scanner.nextLine();
+        String model = scanley.nextLine();
         System.out.println("Enter Vehicle Type:");
-        String vehicleType = scanner.nextLine();
+        String vehicleType = scanley.nextLine();
         System.out.println("Enter Color:");
-        String color = scanner.nextLine();
+        String color = scanley.nextLine();
         System.out.println("Enter Odometer:");
-        int odometer = Integer.parseInt(scanner.nextLine());
+        int odometer = Integer.parseInt(scanley.nextLine());
         System.out.println("Enter Price:");
-        double price = Double.parseDouble(scanner.nextLine());
+        double price = Double.parseDouble(scanley.nextLine());
 
-        // Create a new Vehicle object
+        // Create a new Vehicle object and add it to the dealership
         Vehicle newVehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
         dealership.addVehicle(newVehicle);
         System.out.println("Vehicle added successfully!");
     }
 
     public void processRemoveVehicleRequest() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the VIN of the vehicle to remove:");
-        int vin = Integer.parseInt(scanner.nextLine());
+        int vin = Integer.parseInt(scanley.nextLine());
 
-        dealership.removeVehicle(vin);
-        System.out.println("Vehicle removed successfully!");
+        if (dealership.removeVehicle(vin)) {
+            System.out.println("Vehicle removed successfully!");
+        } else {
+            System.out.println("Vehicle with VIN " + vin + " not found.");
+        }
     }
 }
