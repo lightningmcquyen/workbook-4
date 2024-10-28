@@ -13,7 +13,7 @@ class UserInterfaceTest {
         UserInterface userInterface = new UserInterface();
 
         // Add vehicles to the dealership
-        dealership.addVehicle(new Vehicle(1, 2020, "Lexus", "IS 250", "Car", "Black", 16000, 35000.0));
+        dealership.addVehicle(new Vehicle(1, 2014, "Lexus", "IS 250", "Car", "Black", 16000, 35000.0));
         dealership.addVehicle(new Vehicle(2, 2021, "Toyota", "Tacoma", "Truck", "White", 5000, 50000.0));
 
         // Act: Display vehicles
