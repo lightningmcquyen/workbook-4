@@ -25,5 +25,8 @@ class UserInterfaceTest {
 
         // Assert and check if dealership has vehicles
         assertEquals(2, dealership.getAllVehicles().size());
+
+        // Quitting
+        userInterface.quit();
     }
 }
