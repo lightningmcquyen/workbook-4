@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Dealership {
     // Instance variables
-    private final ArrayList<Object> inventory;
+    private final ArrayList<Vehicle> inventory;
     private String name;
     private String address;
     private String phone;

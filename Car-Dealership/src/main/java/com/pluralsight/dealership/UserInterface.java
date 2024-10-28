@@ -23,6 +23,9 @@ public class UserInterface {
     }
 
     public void quit() {
+        DealershipFileManager manager = new DealershipFileManager();
+        manager.saveDealership(dealership); // Save dealership data
+
         System.out.println("""
     
     
@@ -51,7 +54,7 @@ public class UserInterface {
                     (X) Quit
                     
                     ================================
-                            Enter your choice:
+                           Enter your choice:
                     """);
     }
 

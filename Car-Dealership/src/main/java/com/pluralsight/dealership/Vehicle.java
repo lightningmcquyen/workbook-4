@@ -12,7 +12,6 @@ public class Vehicle {
     private double price;
 
     // Constructor to create a Vehicle object with their given attributes
-
     public Vehicle(int vin, int year, String make, String model, String vehicleType, String color, int odometer, double price) {
         this.vin = vin;
         this.year = year;

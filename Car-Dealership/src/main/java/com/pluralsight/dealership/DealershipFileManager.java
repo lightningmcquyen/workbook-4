@@ -1,7 +1,9 @@
 package com.pluralsight.dealership;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ public class DealershipFileManager {
     private static final String FILE_PATH = "src/main/resources/WorkshopFiles/inventory.csv";
 
     public Dealership getDealership() {
-        Dealership dealership = null;
+        Dealership dealership = new Dealership("Name", "Address", "Phone Number");
         List<Vehicle> vehicles = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
@@ -53,7 +55,28 @@ public class DealershipFileManager {
         return dealership;
     }
 
-    public void saveDealership(Dealership dealership) {
-        // logic placeholder
+
+        public void saveDealership(Dealership dealership) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+                // Write dealership information
+                writer.write(dealership.getName() + "|" + dealership.getAddress() + "|" + dealership.getPhone());
+                writer.newLine();
+
+                // Write vehicle information
+                for (Vehicle vehicle : dealership.getAllVehicles()) {
+                    writer.write(vehicle.getVin() + "|" +
+                            vehicle.getYear() + "|" +
+                            vehicle.getMake() + "|" +
+                            vehicle.getModel() + "|" +
+                            vehicle.getVehicleType() + "|" +
+                            vehicle.getColor() + "|" +
+                            vehicle.getOdometer() + "|" +
+                            vehicle.getPrice());
+                    writer.newLine();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Error saving dealership data: " + e.getMessage());
+            }
+        }
     }
-}
